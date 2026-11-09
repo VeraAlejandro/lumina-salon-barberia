@@ -176,13 +176,6 @@ lumina-salon-barberia/
 
 El documento incluye portada institucional, índice, requisitos funcionales y no funcionales, oportunidad de negocio, matriz RBAC, manual de usuario con CRUD para los seis modelos, conclusiones, referencias y anexos.
 
-Los scripts de `scripts/` permiten regenerar el documento y las capturas. Requieren `requirements-dev.txt` y, para actualizar el índice y exportar el PDF, Microsoft Word instalado:
-
-```powershell
-pip install -r requirements-dev.txt
-python scripts/generar_documento.py
-python scripts/actualizar_indice.py
-```
 
 ## Autor
 
