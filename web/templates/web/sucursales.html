@@ -1,0 +1,56 @@
+{% extends "web/base.html" %}
+
+{% block title %}Sucursales · Lumina Salón &amp; Barbería{% endblock %}
+
+{% block contenido %}
+<section class="hero-interior">
+    <div class="contenedor hero-interior__contenido">
+        <span class="migaja">Inicio / Sucursales</span>
+        <h1>Sucursales</h1>
+        <p>
+            Tres ubicaciones en el área metropolitana de Monterrey. Mismo equipo,
+            mismos estándares y la misma atención en cada una.
+        </p>
+    </div>
+</section>
+
+<section class="seccion">
+    <div class="contenedor">
+        <div class="rejilla rejilla--sucursales">
+            {% for sucursal in sucursales %}
+                {% include "web/partials/tarjeta_sucursal.html" %}
+            {% empty %}
+                <div class="vacio">
+                    <strong>No hay sucursales activas</strong>
+                    <p>Activa o registra sucursales desde el panel de administración.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="seccion seccion--blanca">
+    <div class="contenedor">
+        <div class="seccion__cabecera">
+            <div>
+                <span class="etiqueta">Cómo llegar</span>
+                <h2 class="titulo-seccion">Estacionamiento y <em>transporte</em>.</h2>
+            </div>
+        </div>
+        <div class="rejilla rejilla--servicios">
+            <div class="tarjeta-contacto">
+                <h3>Universidad</h3>
+                <p>A dos cuadras de la estación del Metro Universidad. Estacionamiento gratuito por 2 horas con validación.</p>
+            </div>
+            <div class="tarjeta-contacto">
+                <h3>Centro</h3>
+                <p>A 5 minutos caminando de la Macroplaza. Estacionamiento público a media cuadra.</p>
+            </div>
+            <div class="tarjeta-contacto">
+                <h3>Cumbres</h3>
+                <p>Sobre Paseo de los Leones, con acceso directo desde el boulevard. Estacionamiento propio.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

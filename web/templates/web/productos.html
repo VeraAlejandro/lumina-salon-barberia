@@ -1,0 +1,61 @@
+{% extends "web/base.html" %}
+
+{% block title %}Productos · Lumina Salón &amp; Barbería{% endblock %}
+
+{% block contenido %}
+<section class="hero-interior">
+    <div class="contenedor hero-interior__contenido">
+        <span class="migaja">Inicio / Productos</span>
+        <h1>Productos</h1>
+        <p>
+            Selección de marcas profesionales para mantener el resultado en casa.
+            Disponibles en cualquiera de nuestras sucursales.
+        </p>
+    </div>
+</section>
+
+<section class="seccion">
+    <div class="contenedor">
+        <div class="filtros">
+            <a href="{% url 'web:productos' %}" class="filtro {% if not categoria_activa %}filtro--activo{% endif %}">Todos</a>
+            {% for valor, nombre in categorias %}
+                <a href="?categoria={{ valor }}" class="filtro {% if categoria_activa == valor %}filtro--activo{% endif %}">{{ nombre }}</a>
+            {% endfor %}
+
+            <form class="buscador" method="get" role="search">
+                {% if categoria_activa %}<input type="hidden" name="categoria" value="{{ categoria_activa }}">{% endif %}
+                <input type="search" name="q" value="{{ busqueda }}" placeholder="Buscar producto o marca" aria-label="Buscar producto">
+                <button type="submit" class="boton boton--oscuro boton--pequeno">Buscar</button>
+            </form>
+        </div>
+
+        <div class="rejilla rejilla--productos">
+            {% for producto in productos %}
+                {% include "web/partials/tarjeta_producto.html" %}
+            {% empty %}
+                <div class="vacio">
+                    <strong>No encontramos productos</strong>
+                    <p>Intenta con otra categoría o revisa la ortografía de tu búsqueda.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="seccion seccion--blanca">
+    <div class="contenedor">
+        <div class="seccion__cabecera">
+            <div>
+                <span class="etiqueta">Asesoría incluida</span>
+                <h2 class="titulo-seccion">Compra con <em>acompañamiento</em>.</h2>
+            </div>
+        </div>
+        <p style="max-width: 680px; color: var(--texto-suave);">
+            No vendemos productos por vender: en sucursal te explicamos cómo usarlos,
+            cuánto aplicar y qué alternativa conviene a tu tipo de cabello o piel.
+            Pregunta a tu estilista durante la cita.
+        </p>
+        <a href="{% url 'web:reservar' %}" class="boton boton--contorno-oscuro">Agendar asesoría</a>
+    </div>
+</section>
+{% endblock %}

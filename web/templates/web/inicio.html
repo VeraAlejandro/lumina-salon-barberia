@@ -1,0 +1,196 @@
+{% extends "web/base.html" %}
+{% load static %}
+
+{% block title %}Lumina · Salón &amp; Barbería en Monterrey{% endblock %}
+
+{% block contenido %}
+<section class="hero">
+    <div class="contenedor">
+        <div class="hero__contenido">
+            <span class="hero__etiqueta">Salón &amp; Barbería · Monterrey</span>
+            <h1>Tu estilo, <em>elevado</em> a otra luz.</h1>
+            <p class="hero__texto">
+                Cabello, barbería, uñas y skincare en un mismo lugar. Un equipo que escucha,
+                técnica que se nota y un espacio pensado para que salgas sintiéndote tú.
+            </p>
+            <div class="hero__acciones">
+                <a href="{% url 'web:reservar' %}" class="boton boton--dorado">Reservar cita</a>
+                <a href="{% url 'web:servicios' %}" class="boton boton--contorno">Ver servicios</a>
+            </div>
+            <div class="hero__pie">
+                <span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                        <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/>
+                    </svg>
+                    3 sucursales en Nuevo León
+                </span>
+                <span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                        <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+                    </svg>
+                    Lun a Sáb · 9:00 a 20:00
+                </span>
+                <span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                        <path d="m12 2 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17l-5.9 3 1.2-6.5L2.5 8.9 9.1 8 12 2Z"/>
+                    </svg>
+                    4.9 · 320 reseñas
+                </span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="contenedor">
+    <div class="estadisticas">
+        <div class="estadistica">
+            <strong>12+</strong>
+            <span>Años de experiencia</span>
+        </div>
+        <div class="estadistica">
+            <strong>{{ total_servicios }}</strong>
+            <span>Servicios disponibles</span>
+        </div>
+        <div class="estadistica">
+            <strong>{{ total_estilistas }}</strong>
+            <span>Estilistas certificados</span>
+        </div>
+        <div class="estadistica">
+            <strong>3</strong>
+            <span>Sucursales</span>
+        </div>
+    </div>
+</div>
+
+<section class="seccion">
+    <div class="contenedor bloque-doble">
+        <div class="bloque-doble__media">
+            <img src="{% static 'img/about.jpg' %}" alt="Estilista de Lumina atendiendo a una clienta">
+            <div class="bloque-doble__sello">
+                12 años
+                <small>creando estilo</small>
+            </div>
+        </div>
+        <div>
+            <span class="etiqueta">Nuestra esencia</span>
+            <h2 class="titulo-seccion">Un salón donde la técnica y el trato <em>importan igual</em>.</h2>
+            <p>
+                En Lumina combinamos formación técnica, productos profesionales y una
+                atención sin prisas. Cada cita empieza con una consulta breve para entender
+                qué buscas y qué funciona mejor para tu tipo de cabello o barba.
+            </p>
+            <ul class="lista-ventajas">
+                <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>
+                    Diagnóstico personalizado antes de cada servicio.
+                </li>
+                <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>
+                    Productos profesionales y técnicas actualizadas.
+                </li>
+                <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>
+                    Espacios cómodos, incluyentes y con café de la casa.
+                </li>
+            </ul>
+            <a href="{% url 'web:estilistas' %}" class="boton boton--contorno-oscuro">Conoce al equipo</a>
+        </div>
+    </div>
+</section>
+
+<section class="seccion seccion--blanca">
+    <div class="contenedor">
+        <div class="seccion__cabecera">
+            <div>
+                <span class="etiqueta">Lo más pedido</span>
+                <h2 class="titulo-seccion">Servicios que <em>hablan por sí solos</em>.</h2>
+            </div>
+            <a href="{% url 'web:servicios' %}" class="boton boton--contorno-oscuro boton--pequeno">Ver todos</a>
+        </div>
+
+        <div class="rejilla rejilla--servicios">
+            {% for servicio in servicios %}
+                {% include "web/partials/tarjeta_servicio.html" %}
+            {% empty %}
+                <div class="vacio">
+                    <strong>Aún no hay servicios publicados</strong>
+                    <p>Agrega servicios desde el panel de administración para verlos aquí.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="rejilla seccion--ajustada cinta-cta">
+    <div class="contenedor">
+        <span class="etiqueta">Tu próxima cita</span>
+        <h2>Date el tiempo que mereces. Nosotros nos encargamos del resto.</h2>
+        <p>Elige sucursal, servicio y estilista. Confirmamos por teléfono el mismo día.</p>
+        <a href="{% url 'web:reservar' %}" class="boton boton--dorado">Agendar ahora</a>
+    </div>
+</section>
+
+<section class="seccion">
+    <div class="contenedor">
+        <div class="seccion__cabecera">
+            <div>
+                <span class="etiqueta">Nuestro equipo</span>
+                <h2 class="titulo-seccion">Manos expertas, <em>trato cercano</em>.</h2>
+            </div>
+            <a href="{% url 'web:estilistas' %}" class="boton boton--contorno-oscuro boton--pequeno">Ver equipo</a>
+        </div>
+
+        <div class="rejilla rejilla--estilistas">
+            {% for estilista in estilistas %}
+                {% include "web/partials/tarjeta_estilista.html" %}
+            {% empty %}
+                <div class="vacio">
+                    <strong>Aún no hay estilistas registrados</strong>
+                    <p>El equipo aparecerá aquí en cuanto se capture en el panel.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="seccion seccion--blanca">
+    <div class="contenedor">
+        <div class="seccion__cabecera">
+            <div>
+                <span class="etiqueta">Para llevar</span>
+                <h2 class="titulo-seccion">El cuidado continúa <em>en casa</em>.</h2>
+            </div>
+            <a href="{% url 'web:productos' %}" class="boton boton--contorno-oscuro boton--pequeno">Ver productos</a>
+        </div>
+
+        <div class="rejilla rejilla--productos">
+            {% for producto in productos %}
+                {% include "web/partials/tarjeta_producto.html" %}
+            {% empty %}
+                <div class="vacio">
+                    <strong>Catálogo en preparación</strong>
+                    <p>Pronto tendremos productos disponibles en sucursal.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="seccion">
+    <div class="contenedor">
+        <div class="seccion__cabecera">
+            <div>
+                <span class="etiqueta">Visítanos</span>
+                <h2 class="titulo-seccion">Tres puntos, <em>una misma experiencia</em>.</h2>
+            </div>
+            <a href="{% url 'web:sucursales' %}" class="boton boton--contorno-oscuro boton--pequeno">Ver sucursales</a>
+        </div>
+
+        <div class="rejilla rejilla--sucursales">
+            {% for sucursal in sucursales %}
+                {% include "web/partials/tarjeta_sucursal.html" %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

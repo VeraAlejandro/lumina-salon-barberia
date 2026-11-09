@@ -1,0 +1,20 @@
+<article class="tarjeta-estilista">
+    <div class="tarjeta-estilista__foto">
+        {% if estilista.foto %}
+            <img src="{{ estilista.foto.url }}" alt="Retrato de {{ estilista.nombre_completo }}" loading="lazy">
+        {% else %}
+            <div class="media-vacia media-vacia--vertical">{{ estilista.nombre|first }}{{ estilista.apellidos|first }}</div>
+        {% endif %}
+        <span class="tarjeta-estilista__sucursal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/>
+            </svg>
+            {{ estilista.sucursal.nombre }}
+        </span>
+    </div>
+    <div class="tarjeta-estilista__cuerpo">
+        <h3>{{ estilista.nombre_completo }}</h3>
+        <span class="tarjeta-estilista__especialidad">{{ estilista.especialidad }}</span>
+        <p class="tarjeta-estilista__experiencia">{{ estilista.anios_experiencia }} años de experiencia</p>
+    </div>
+</article>

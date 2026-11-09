@@ -1,0 +1,74 @@
+{% extends "web/base.html" %}
+{% load static %}
+
+{% block title %}Servicios · Lumina Salón &amp; Barbería{% endblock %}
+
+{% block contenido %}
+<section class="hero-interior">
+    <div class="contenedor hero-interior__contenido">
+        <span class="migaja">Inicio / Servicios</span>
+        <h1>Servicios</h1>
+        <p>
+            Cabello, barbería, uñas, faciales y maquillaje. Precios claros, tiempos reales
+            y un diagnóstico antes de comenzar.
+        </p>
+    </div>
+</section>
+
+<section class="seccion">
+    <div class="contenedor">
+        <div class="filtros">
+            <a href="{% url 'web:servicios' %}" class="filtro {% if not categoria_activa %}filtro--activo{% endif %}">Todos</a>
+            {% for valor, nombre in categorias %}
+                <a href="?categoria={{ valor }}" class="filtro {% if categoria_activa == valor %}filtro--activo{% endif %}">{{ nombre }}</a>
+            {% endfor %}
+        </div>
+
+        <div class="rejilla rejilla--servicios">
+            {% for servicio in servicios %}
+                {% include "web/partials/tarjeta_servicio.html" %}
+            {% empty %}
+                <div class="vacio">
+                    <strong>No hay servicios en esta categoría</strong>
+                    <p>Prueba con otra categoría o consulta nuestras sucursales.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="seccion seccion--blanca">
+    <div class="contenedor bloque-doble">
+        <div>
+            <span class="etiqueta">Antes de tu cita</span>
+            <h2 class="titulo-seccion">¿No sabes qué servicio elegir?</h2>
+            <p>
+                Escríbenos o reserva una consulta breve. Te ayudamos a definir el servicio
+                ideal según tu tipo de cabello, el estado de tu barba o el evento que tengas.
+            </p>
+            <ul class="lista-ventajas">
+                <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>
+                    Cotización sin compromiso.
+                </li>
+                <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>
+                    Atención para cabello rizado, lacio y teñido.
+                </li>
+                <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>
+                    Servicios para toda la familia.
+                </li>
+            </ul>
+            <a href="{% url 'web:reservar' %}" class="boton boton--oscuro">Reservar una cita</a>
+        </div>
+        <div class="bloque-doble__media">
+            <img src="{% static 'img/about.jpg' %}" alt="Aplicación de color en Lumina" loading="lazy">
+            <div class="bloque-doble__sello">
+                +40
+                <small>servicios al año</small>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends "web/base.html" %}
+
+{% block title %}Contacto · Lumina Salón &amp; Barbería{% endblock %}
+
+{% block contenido %}
+<section class="hero-interior">
+    <div class="contenedor hero-interior__contenido">
+        <span class="migaja">Inicio / Contacto</span>
+        <h1>Contacto</h1>
+        <p>
+            ¿Dudas sobre un servicio, un producto o una cita? Escríbenos o visítanos
+            en cualquiera de nuestras sucursales.
+        </p>
+    </div>
+</section>
+
+<section class="seccion">
+    <div class="contenedor">
+        <div class="rejilla-contacto">
+            <div class="tarjeta-contacto">
+                <div class="tarjeta-contacto__icono">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                        <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/>
+                    </svg>
+                </div>
+                <h3>Llámanos</h3>
+                <a href="tel:+528112345678">81 1234 5678</a>
+                <p>Lun a Sáb · 9:00 a 20:00</p>
+            </div>
+
+            <div class="tarjeta-contacto">
+                <div class="tarjeta-contacto__icono">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                        <path d="M4 4h16v16H4z"/><path d="m4 7 8 6 8-6"/>
+                    </svg>
+                </div>
+                <h3>Escríbenos</h3>
+                <a href="mailto:hola@lumina.mx">hola@lumina.mx</a>
+                <p>Respondemos en menos de 24 horas.</p>
+            </div>
+
+            <div class="tarjeta-contacto">
+                <div class="tarjeta-contacto__icono">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                        <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/>
+                    </svg>
+                </div>
+                <h3>Visítanos</h3>
+                <p>Av. Universidad 1200<br>San Nicolás de los Garza, N.L.</p>
+            </div>
+        </div>
+
+        <div class="seccion__cabecera">
+            <div>
+                <span class="etiqueta">Nuestras ubicaciones</span>
+                <h2 class="titulo-seccion">Encuentra tu <em>Lumina</em> más cercana.</h2>
+            </div>
+            <a href="{% url 'web:reservar' %}" class="boton boton--oscuro boton--pequeno">Reservar cita</a>
+        </div>
+
+        <div class="rejilla rejilla--sucursales">
+            {% for sucursal in sucursales %}
+                {% include "web/partials/tarjeta_sucursal.html" %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="seccion seccion--blanca">
+    <div class="contenedor">
+        <div class="seccion__cabecera">
+            <div>
+                <span class="etiqueta">Preguntas frecuentes</span>
+                <h2 class="titulo-seccion">Lo que más <em>nos preguntan</em>.</h2>
+            </div>
+        </div>
+
+        <div class="preguntas">
+            <details>
+                <summary>¿Necesito cita o puedo llegar sin reservar?</summary>
+                <p>Atendemos por orden de llegada cuando hay espacio, pero recomendamos reservar para asegurar a tu estilista y el horario que prefieres.</p>
+            </details>
+            <details>
+                <summary>¿Puedo cambiar o cancelar mi cita?</summary>
+                <p>Sí. Llámanos o responde el mensaje de confirmación con al menos 4 horas de anticipación y la reprogramamos sin costo.</p>
+            </details>
+            <details>
+                <summary>¿Qué métodos de pago aceptan?</summary>
+                <p>Efectivo, tarjeta de débito y crédito, y transferencia. Para servicios de más de $1,500 solicitamos un anticipo del 30%.</p>
+            </details>
+            <details>
+                <summary>¿Atienden a niños y niñas?</summary>
+                <p>Sí, contamos con servicio de corte infantil en las sucursales Universidad y Cumbres. Te pedimos reservar indicando la edad.</p>
+            </details>
+            <details>
+                <summary>¿Los productos que venden son los mismos que usan en el salón?</summary>
+                <p>Sí. Trabajamos con las mismas marcas profesionales que usamos en cabina, para que puedas replicar el resultado en casa.</p>
+            </details>
+        </div>
+    </div>
+</section>
+{% endblock %}

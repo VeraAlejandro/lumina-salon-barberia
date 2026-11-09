@@ -1,0 +1,7 @@
+# Herramientas opcionales para regenerar capturas y el documento Word.
+# No son necesarias para ejecutar el sitio.
+-r requirements.txt
+playwright==1.64.1
+python-docx==1.2.0
+pymupdf==2.1
+pywin32==312; sys_platform == "win32"

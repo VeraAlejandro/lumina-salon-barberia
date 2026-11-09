@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ titulo|default:"Inicio" }} · Lumina Salón &amp; Barbería{% endblock %}</title>
+    <meta name="description" content="Lumina es un salón de belleza y barbería en Monterrey. Reserva tu cita con nuestros estilistas y descubre servicios de cabello, barbería, uñas y skincare.">
+    <link rel="icon" href="{% static 'img/favicon.svg' %}" type="image/svg+xml">
+    <link rel="stylesheet" href="{% static 'css/lumina.css' %}">
+</head>
+<body>
+    <div class="barra-superior">
+        <div class="contenedor barra-superior__interior">
+            <span>San Nicolás de los Garza, Nuevo León</span>
+            <span class="barra-superior__separador">·</span>
+            <span>Lun a Sáb · 9:00 a 20:00</span>
+            <a class="barra-superior__telefono" href="tel:+528112345678">81 1234 5678</a>
+        </div>
+    </div>
+
+    <header class="encabezado" id="encabezado">
+        <div class="contenedor encabezado__interior">
+            <a href="{% url 'web:inicio' %}" class="marca" aria-label="Lumina, ir al inicio">
+                <span class="marca__icono">L</span>
+                <span class="marca__texto">
+                    <strong>LUMINA</strong>
+                    <small>Salón &amp; Barbería</small>
+                </span>
+            </a>
+
+            <button class="menu-boton" id="menuBoton" aria-label="Abrir menú" aria-expanded="false" aria-controls="menuPrincipal">
+                <span></span><span></span><span></span>
+            </button>
+
+            <nav class="navegacion" id="menuPrincipal" aria-label="Navegación principal">
+                <a href="{% url 'web:inicio' %}" {% if request.resolver_match.url_name == 'inicio' %}class="activo"{% endif %}>Inicio</a>
+                <a href="{% url 'web:servicios' %}" {% if request.resolver_match.url_name == 'servicios' %}class="activo"{% endif %}>Servicios</a>
+                <a href="{% url 'web:estilistas' %}" {% if request.resolver_match.url_name == 'estilistas' %}class="activo"{% endif %}>Estilistas</a>
+                <a href="{% url 'web:productos' %}" {% if request.resolver_match.url_name == 'productos' %}class="activo"{% endif %}>Productos</a>
+                <a href="{% url 'web:sucursales' %}" {% if request.resolver_match.url_name == 'sucursales' %}class="activo"{% endif %}>Sucursales</a>
+                <a href="{% url 'web:contacto' %}" {% if request.resolver_match.url_name == 'contacto' %}class="activo"{% endif %}>Contacto</a>
+                <a href="{% url 'web:reservar' %}" class="boton boton--dorado navegacion__cta">Reservar cita</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        {% if messages %}
+            <div class="contenedor avisos">
+                {% for message in messages %}
+                    <div class="aviso aviso--{{ message.tags }}" role="status">
+                        <span class="aviso__icono">✓</span>
+                        <p>{{ message }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% block contenido %}{% endblock %}
+    </main>
+
+    <footer class="pie">
+        <div class="contenedor pie__grid">
+            <div class="pie__marca">
+                <div class="marca marca--pie">
+                    <span class="marca__icono">L</span>
+                    <span class="marca__texto">
+                        <strong>LUMINA</strong>
+                        <small>Salón &amp; Barbería</small>
+                    </span>
+                </div>
+                <p>Belleza, barbería y cuidado personal con un trato cercano. Tu estilo, elevado a otra luz.</p>
+                <div class="pie__redes" aria-label="Redes sociales">
+                    <a href="#" aria-label="Instagram">IG</a>
+                    <a href="#" aria-label="Facebook">FB</a>
+                    <a href="#" aria-label="TikTok">TK</a>
+                </div>
+            </div>
+
+            <div class="pie__columna">
+                <h3>Explora</h3>
+                <a href="{% url 'web:servicios' %}">Servicios</a>
+                <a href="{% url 'web:estilistas' %}">Estilistas</a>
+                <a href="{% url 'web:productos' %}">Productos</a>
+                <a href="{% url 'web:sucursales' %}">Sucursales</a>
+            </div>
+
+            <div class="pie__columna">
+                <h3>Visítanos</h3>
+                <p>Av. Universidad 1200<br>San Nicolás de los Garza, N.L.</p>
+                <p>Lun a Sáb · 9:00 a 20:00</p>
+            </div>
+
+            <div class="pie__columna">
+                <h3>Contacto</h3>
+                <a href="tel:+528112345678">81 1234 5678</a>
+                <a href="mailto:hola@lumina.mx">hola@lumina.mx</a>
+                <a href="{% url 'web:reservar' %}" class="boton boton--contorno boton--pequeno">Reservar cita</a>
+            </div>
+        </div>
+
+        <div class="contenedor pie__legal">
+            <p>© {% now "Y" %} Lumina Salón &amp; Barbería. Proyecto integrador · Fundamentos de Desarrollo Web.</p>
+            <a href="{% url 'admin:index' %}">Acceso administrativo</a>
+        </div>
+    </footer>
+
+    {% if request.resolver_match.url_name != 'reservar' %}
+        <a href="{% url 'web:reservar' %}" class="boton-flotante" aria-label="Reservar cita">
+            <span>Reservar</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/>
+            </svg>
+        </a>
+    {% endif %}
+
+    <script>
+        const boton = document.getElementById('menuBoton');
+        const menu = document.getElementById('menuPrincipal');
+        boton.addEventListener('click', () => {
+            const abierto = menu.classList.toggle('navegacion--abierta');
+            boton.setAttribute('aria-expanded', abierto);
+            boton.classList.toggle('menu-boton--activo', abierto);
+        });
+        menu.querySelectorAll('a').forEach((enlace) => {
+            enlace.addEventListener('click', () => {
+                menu.classList.remove('navegacion--abierta');
+                boton.classList.remove('menu-boton--activo');
+                boton.setAttribute('aria-expanded', 'false');
+            });
+        });
+    </script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

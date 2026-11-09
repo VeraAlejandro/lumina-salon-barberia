@@ -1,0 +1,122 @@
+/* Identidad visual de Lumina dentro del panel de administración. */
+
+#header {
+    background: #171512;
+    color: #f7f2e9;
+}
+
+#branding h1,
+#branding h1 a:link,
+#branding h1 a:visited {
+    color: #e3c98f;
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+}
+
+#user-tools,
+#user-tools a {
+    color: #d8d0c0;
+}
+
+#user-tools a:hover {
+    color: #e3c98f;
+    border-bottom-color: #c6a15b;
+}
+
+div.breadcrumbs {
+    background: #2a241d;
+    color: #e3c98f;
+}
+
+div.breadcrumbs a {
+    color: #f7f2e9;
+}
+
+.module h2,
+.module caption,
+.inline-group h2 {
+    background: #2a241d;
+    color: #e3c98f;
+}
+
+#changelist-filter h2 {
+    background: #2a241d;
+    color: #e3c98f;
+}
+
+a:link,
+a:visited {
+    color: #7a5c22;
+}
+
+.button,
+input[type="submit"],
+input[type="button"],
+.submit-row input,
+a.button {
+    background: #2a241d;
+    color: #fffdf9;
+}
+
+.button.default,
+input[type="submit"].default,
+.submit-row input.default {
+    background: #c6a15b;
+    color: #171512;
+    font-weight: 700;
+}
+
+.button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover,
+.submit-row input:hover,
+a.button:hover {
+    background: #3a3128;
+}
+
+.button.default:hover,
+input[type="submit"].default:hover,
+.submit-row input.default:hover {
+    background: #e3c98f;
+}
+
+body.login {
+    background: #171512;
+}
+
+.login #container {
+    background: #f7f2e9;
+    border: 1px solid #c6a15b;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.login #header {
+    background: #171512;
+}
+
+.login .form-row label {
+    color: #2c2823;
+}
+
+.login .submit-row input {
+    background: #c6a15b;
+    color: #171512;
+}
+
+/* Ajuste de legibilidad en tablas y filtros. */
+#result_list thead th {
+    background: #2a241d;
+    color: #f7f2e9;
+}
+
+#result_list thead th a,
+#result_list thead th a:link,
+#result_list thead th a:visited {
+    color: #e3c98f;
+}
+
+#changelist-filter h3 {
+    color: #2a241d;
+}

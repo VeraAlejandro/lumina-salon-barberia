@@ -1,0 +1,48 @@
+{% extends "web/base.html" %}
+
+{% block title %}Estilistas · Lumina Salón &amp; Barbería{% endblock %}
+
+{% block contenido %}
+<section class="hero-interior">
+    <div class="contenedor hero-interior__contenido">
+        <span class="migaja">Inicio / Estilistas</span>
+        <h1>Nuestro equipo</h1>
+        <p>
+            Especialistas en color, corte, barbería y estética. Cada perfil incluye su
+            especialidad y la sucursal donde puedes encontrarlo.
+        </p>
+    </div>
+</section>
+
+<section class="seccion">
+    <div class="contenedor">
+        <div class="rejilla rejilla--estilistas">
+            {% for estilista in estilistas %}
+                {% include "web/partials/tarjeta_estilista.html" %}
+            {% empty %}
+                <div class="vacio">
+                    <strong>Aún no hay estilistas registrados</strong>
+                    <p>Captura el equipo desde el panel de administración.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="seccion seccion--blanca">
+    <div class="contenedor">
+        <div class="seccion__cabecera">
+            <div>
+                <span class="etiqueta">Trabaja con nosotros</span>
+                <h2 class="titulo-seccion">Buscamos talento que ame <em>lo que hace</em>.</h2>
+            </div>
+        </div>
+        <p style="max-width: 660px; color: var(--texto-suave);">
+            Si eres estilista, barbero o especialista en uñas y quieres formar parte de
+            Lumina, envíanos tu portafolio. Valoramos la formación continua, el trato
+            respetuoso y las ganas de crecer.
+        </p>
+        <a href="{% url 'web:contacto' %}" class="boton boton--contorno-oscuro">Contactar al equipo</a>
+    </div>
+</section>
+{% endblock %}

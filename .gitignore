@@ -1,0 +1,52 @@
+# ============================================================
+# Lumina — Salón & Barbería
+# Archivos locales y generados que no deben versionarse
+# ============================================================
+
+# Entorno virtual y caché de Python
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Base de datos local y respaldos
+db.sqlite3
+*.sqlite3
+*.sqlite3-journal
+*.sqlite3-wal
+*.sqlite3-shm
+db_backup_*.sqlite3
+
+# Salida de collectstatic
+staticfiles/
+
+# Variables de entorno y secretos
+.env
+.env.*
+!.env.example
+
+# Archivos temporales de Word y del sistema
+~$*.docx
+~$*.xlsx
+*.tmp
+*.bak
+Thumbs.db
+desktop.ini
+
+# Revisión visual y archivos intermedios
+capturas/revision/
+capturas/revision_doc/
+docs/assets/capturas/
+*.log
+
+# Configuración local del editor
+.vscode/
+.idea/
+.DS_Store

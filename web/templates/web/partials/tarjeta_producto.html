@@ -1,0 +1,19 @@
+<article class="tarjeta-producto">
+    <div class="tarjeta-producto__media">
+        {% if producto.imagen %}
+            <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }} de {{ producto.marca }}" loading="lazy">
+        {% else %}
+            <div class="media-vacia">L</div>
+        {% endif %}
+        {% if producto.disponible %}
+            <span class="disponibilidad disponibilidad--si">Disponible</span>
+        {% else %}
+            <span class="disponibilidad disponibilidad--no">Agotado</span>
+        {% endif %}
+    </div>
+    <div class="tarjeta-producto__cuerpo">
+        <span class="tarjeta-producto__marca">{{ producto.marca }}</span>
+        <h3>{{ producto.nombre }}</h3>
+        <span class="precio">${{ producto.precio|floatformat:0 }} <small>MXN</small></span>
+    </div>
+</article>

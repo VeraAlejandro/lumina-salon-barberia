@@ -1,0 +1,23 @@
+<article class="tarjeta-servicio">
+    <div class="tarjeta-servicio__media">
+        {% if servicio.imagen %}
+            <img src="{{ servicio.imagen.url }}" alt="{{ servicio.nombre }}" loading="lazy">
+        {% else %}
+            <div class="media-vacia">L</div>
+        {% endif %}
+        <span class="insignia">{{ servicio.get_categoria_display }}</span>
+    </div>
+    <div class="tarjeta-servicio__cuerpo">
+        <h3>{{ servicio.nombre }}</h3>
+        <p>{{ servicio.descripcion|truncatechars:100 }}</p>
+        <div class="tarjeta-servicio__meta">
+            <span class="precio">${{ servicio.precio|floatformat:0 }} <small>MXN</small></span>
+            <span class="duracion">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+                </svg>
+                {{ servicio.duracion_minutos }} min
+            </span>
+        </div>
+    </div>
+</article>
